@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
+<%@ page session="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -33,17 +34,17 @@
             <th><fmt:message key="telephone"/></th>
             <td><c:out value="${owner.telephone}"/></td>
         </tr>
-         <tr>
-            <td> 
-            	<spring:url value="{ownerId}/edit.html" var="editUrl">
+        <tr>
+            <td>
+                <spring:url value="{ownerId}/edit.html" var="editUrl">
                     <spring:param name="ownerId" value="${owner.id}"/>
                 </spring:url>
                 <a href="${fn:escapeXml(editUrl)}" class="btn btn-info"><fmt:message key="editOwner"/></a></td>
             <td>
-            	<spring:url value="{ownerId}/pets/new.html" var="addUrl">
+                <spring:url value="{ownerId}/pets/new.html" var="addUrl">
                     <spring:param name="ownerId" value="${owner.id}"/>
                 </spring:url>
-                <a href="${fn:escapeXml(addUrl)}"  class="btn btn-success"><fmt:message key="addNewPet"/></a></td>
+                <a href="${fn:escapeXml(addUrl)}" class="btn btn-success"><fmt:message key="addNewPet"/></a></td>
         </tr>
     </table>
 
@@ -91,7 +92,7 @@
 			                    </spring:url>
 			                    <a href="${fn:escapeXml(visitUrl)}"><fmt:message key="addVisit"/></a>
                             </td>
-                       	</tr>
+                        </tr>
                     </table>
                 </td>
             </tr>

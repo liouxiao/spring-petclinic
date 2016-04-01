@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
+<%@ page session="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,9 +41,9 @@
                 <c:out value="${pet.name}"/>
             </c:forEach>
         </datatables:column>
-        <datatables:export type="pdf" cssClass="btn" cssStyle="height: 25px;" />
+        <datatables:export type="pdf" cssClass="btn" cssStyle="height: 25px;"/>
     </datatables:table>
-    
+
     <jsp:include page="../fragments/footer.jsp"/>
 
 </div>

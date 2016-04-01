@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
+<%@ page session="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,10 +16,6 @@
 <body>
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
-    <c:choose>
-        <c:when test="${owner['new']}"><c:set var="method" value="post"/></c:when>
-        <c:otherwise><c:set var="method" value="put"/></c:otherwise>
-    </c:choose>
 
     <h2>
         <c:if test="${owner['new']}"><fmt:message key="new"/> </c:if> <fmt:message key="owner"/>
