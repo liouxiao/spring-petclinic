@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
@@ -36,7 +37,14 @@
         <div class="control-group" id="owner">
             <label class="control-label"><fmt:message key="owner"/> </label>
 
-            <c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
+            <c:choose>
+            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            	<c:out value="${pet.owner.lastName}, ${pet.owner.firstName}"/>
+            </c:when>
+            <c:otherwise>
+            	<c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
+            </c:otherwise>
+            </c:choose>
         </div>
         <petclinic:inputField label="${Name}" name="name"/>
         <petclinic:inputField label="${BirthDate}" name="birthDate"/>

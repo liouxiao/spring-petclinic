@@ -28,7 +28,16 @@
             <spring:url value="/owners/{ownerId}.html" var="ownerUrl">
                 <spring:param name="ownerId" value="${owner.id}"/>
             </spring:url>
-            <a href="${fn:escapeXml(ownerUrl)}"><c:out value="${owner.firstName} ${owner.lastName}"/></a>
+            <a href="${fn:escapeXml(ownerUrl)}">
+            	<c:choose>
+            	<c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            		<c:out value="${owner.lastName}, ${owner.firstName}"/>
+            	</c:when>
+            	<c:otherwise>
+            		<c:out value="${owner.firstName} ${owner.lastName}"/>
+            	</c:otherwise>
+            	</c:choose>
+            </a>
         </datatables:column>
         <datatables:column title="${Name}" display="pdf">
             <c:out value="${owner.firstName} ${owner.lastName}"/>

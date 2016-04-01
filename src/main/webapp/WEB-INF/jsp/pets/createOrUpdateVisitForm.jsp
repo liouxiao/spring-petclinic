@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
@@ -38,7 +39,16 @@
             <td><c:out value="${visit.pet.name}"/></td>
             <td><joda:format value="${visit.pet.birthDate}" pattern="yyyy/MM/dd"/></td>
             <td><c:out value="${visit.pet.type.name}"/></td>
-            <td><c:out value="${visit.pet.owner.firstName} ${visit.pet.owner.lastName}"/></td>
+            <td>
+            <c:choose>
+            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            	<c:out value="${visit.pet.owner.lastName}, ${visit.pet.owner.firstName}"/>
+            </c:when>
+            <c:otherwise>
+            	<c:out value="${visit.pet.owner.firstName} ${visit.pet.owner.lastName}"/>
+            </c:otherwise>
+            </c:choose>
+            </td>
         </tr>
     </table>
     

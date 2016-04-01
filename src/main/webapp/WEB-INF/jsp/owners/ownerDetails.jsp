@@ -20,7 +20,16 @@
     <table class="table table-striped" style="width:600px;">
         <tr>
             <th><fmt:message key="name"/></th>
-            <td><b><c:out value="${owner.firstName} ${owner.lastName}"/></b></td>
+            <td><b>
+            <c:choose>
+            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            	<c:out value="${owner.lastName}, ${owner.firstName}"/>
+            </c:when>
+            <c:otherwise>
+            	<c:out value="${owner.firstName} ${owner.lastName}"/>
+            </c:otherwise>
+            </c:choose>
+            </b></td>
         </tr>
         <tr>
             <th><fmt:message key="address"/></th>

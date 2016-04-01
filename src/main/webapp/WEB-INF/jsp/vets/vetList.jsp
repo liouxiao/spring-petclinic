@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %>
 
 <html lang="en">
@@ -23,7 +24,14 @@
     <datatables:table id="vets" data="${vets.vetList}" row="vet" theme="bootstrap2" cssClass="table table-striped"
                       pageable="false" info="false">
         <datatables:column title="${Name}">
-            <c:out value="${vet.firstName} ${vet.lastName}"></c:out>
+            <c:choose>
+            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            	<c:out value="${vet.lastName}, ${vet.firstName}"/>
+            </c:when>
+            <c:otherwise>
+            	<c:out value="${vet.firstName} ${vet.lastName}"></c:out>
+            </c:otherwise>
+            </c:choose>
         </datatables:column>
         <datatables:column title="${Specialties}">
             <c:forEach var="specialty" items="${vet.specialties}">

@@ -28,9 +28,17 @@
 	<spring:message code="telephone" var="Telephone" />
 
     <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
+    <c:choose>
+    <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+        <petclinic:inputField label="${lastName}" name="lastName"/>
+        <petclinic:inputField label="${firstName}" name="firstName"/>
+    </c:when>
+    <c:otherwise>
         <petclinic:inputField label="${firstName}" name="firstName"/>
         <petclinic:inputField label="${lastName}" name="lastName"/>
-        <petclinic:inputField label="${Address}" name="address"/>
+    </c:otherwise>
+    </c:choose>
+            <petclinic:inputField label="${Address}" name="address"/>
         <petclinic:inputField label="${City}" name="city"/>
         <petclinic:inputField label="${Telephone}" name="telephone"/>
 
