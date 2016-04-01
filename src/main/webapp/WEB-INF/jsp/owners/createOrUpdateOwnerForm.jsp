@@ -27,7 +27,7 @@
 	<spring:message code="city" var="City" />
 	<spring:message code="telephone" var="Telephone" />
 
-    <form:form modelAttribute="owner" method="${method}" class="form-horizontal" id="add-owner-form">
+    <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
         <petclinic:inputField label="${firstName}" name="firstName"/>
         <petclinic:inputField label="${lastName}" name="lastName"/>
         <petclinic:inputField label="${Address}" name="address"/>
