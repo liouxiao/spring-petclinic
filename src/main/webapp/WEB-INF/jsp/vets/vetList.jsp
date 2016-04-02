@@ -13,7 +13,7 @@
 <jsp:include page="../fragments/staticFiles.jsp"/>
 
 <body>
-<div class="container" style="width: 700px">
+<div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
 
     <h2><fmt:message key="veterinarians"/></h2>
@@ -21,7 +21,7 @@
 	<spring:message code="name" var="Name" />
 	<spring:message code="specialties" var="Specialties" />
 
-    <datatables:table id="vets" data="${vets.vetList}" row="vet" theme="bootstrap2" cssClass="table table-striped"
+    <datatables:table id="vets" data="${vets.vetList}" row="vet" cssClass="table table-striped"
                       pageable="false" info="false">
         <datatables:column title="${Name}">
             <c:choose>
