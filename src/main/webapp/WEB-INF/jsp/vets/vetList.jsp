@@ -13,7 +13,7 @@
 <jsp:include page="../fragments/staticFiles.jsp"/>
 
 <body>
-<div class="container">
+<div class="container" style="width: 700px">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
 
     <h2><fmt:message key="veterinarians"/></h2>

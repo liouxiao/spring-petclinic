@@ -12,7 +12,7 @@
 <jsp:include page="../fragments/staticFiles.jsp"/>
 
 <body>
-<div class="container">
+<div class="container" style="width: 700px">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
     <h2><fmt:message key="owners"/></h2>
     
@@ -23,7 +23,7 @@
     <spring:message code="pets" var="Pets" />
     
     <datatables:table id="owners" data="${selections}" row="owner" theme="bootstrap2" 
-                      cssClass="table table-striped" pageable="false" info="false" export="pdf">
+                      cssClass="table table-striped" pageable="true" info="false" export="pdf">
         <datatables:column title="${Name}" cssStyle="width: 150px;" display="html">
             <spring:url value="/owners/{ownerId}.html" var="ownerUrl">
                 <spring:param name="ownerId" value="${owner.id}"/>
