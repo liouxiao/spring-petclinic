@@ -18,12 +18,9 @@
 
     <h2><fmt:message key="veterinarians"/></h2>
 
-	<spring:message code="name" var="Name" />
-	<spring:message code="specialties" var="Specialties" />
-
     <datatables:table id="vets" data="${vets.vetList}" row="vet" cssClass="table table-striped"
                       pageable="false" info="false">
-        <datatables:column title="${Name}">
+        <datatables:column titleKey="name">
             <c:choose>
             <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
             	<c:out value="${vet.lastName}, ${vet.firstName}"/>
@@ -33,7 +30,7 @@
             </c:otherwise>
             </c:choose>
         </datatables:column>
-        <datatables:column title="${Specialties}">
+        <datatables:column titleKey="specialties">
             <c:forEach var="specialty" items="${vet.specialties}">
                 <c:out value="${specialty.name}"/>
             </c:forEach>

@@ -265,6 +265,21 @@
             <artifactId>datatables-export-itext</artifactId>
             <version>${dandelion.datatables.version}</version>
         </dependency>
+        <dependency>
+			<groupId>com.github.dandelion</groupId>
+			<artifactId>datatables-spring3</artifactId>
+			<version>${dandelion.datatables.version}</version>
+		</dependency>
+        <dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itext-asian</artifactId>
+			<version>5.2.0</version>
+		</dependency>
         <!-- temporary fix: below dependency should not be necessary as it is a transitive dependency.
         For some reason we can't build the app unless it is a first level dependency -->
         <dependency>

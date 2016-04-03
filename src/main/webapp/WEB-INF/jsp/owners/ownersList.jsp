@@ -15,16 +15,10 @@
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
     <h2><fmt:message key="owners"/></h2>
-    
-    <spring:message code="name" var="Name" />
-    <spring:message code="address" var="Address" />
-    <spring:message code="city" var="City" />
-    <spring:message code="telephone" var="Telephone" />
-    <spring:message code="pets" var="Pets" />
-    
+
     <datatables:table id="owners" data="${selections}" row="owner"
                       cssClass="table table-striped" pageable="true" info="false" export="pdf">
-        <datatables:column title="${Name}" cssStyle="width: 150px;" display="html">
+        <datatables:column titleKey="name" cssStyle="width: 150px;" display="html">
             <spring:url value="/owners/{ownerId}.html" var="ownerUrl">
                 <spring:param name="ownerId" value="${owner.id}"/>
             </spring:url>
@@ -39,13 +33,20 @@
             	</c:choose>
             </a>
         </datatables:column>
-        <datatables:column title="${Name}" display="pdf">
-            <c:out value="${owner.firstName} ${owner.lastName}"/>
+        <datatables:column titleKey="name" display="pdf">
+            <c:choose>
+            	<c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+            		<c:out value="${owner.lastName}, ${owner.firstName}"/>
+            	</c:when>
+            	<c:otherwise>
+            		<c:out value="${owner.firstName} ${owner.lastName}"/>
+            	</c:otherwise>
+            </c:choose>
         </datatables:column>
-        <datatables:column title="${Address}" property="address" cssStyle="width: 200px;"/>
-        <datatables:column title="${City}" property="city"/>
-        <datatables:column title="${Telephone}" xtitlekey="telephone" property="telephone"/>
-        <datatables:column title="${Pets}" xtitlekey="pets" cssStyle="width: 100px;">
+        <datatables:column titleKey="address" property="address" cssStyle="width: 200px;"/>
+        <datatables:column titleKey="city" property="city"/>
+        <datatables:column titleKey="telephone" property="telephone"/>
+        <datatables:column titleKey="pets" cssStyle="width: 100px;">
             <c:forEach var="pet" items="${owner.pets}">
                 <c:out value="${pet.name}"/>
             </c:forEach>
