@@ -12,16 +12,13 @@
 
 <html lang="en">
 
-<jsp:include page="../fragments/staticFiles.jsp"/>
-
+<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 <body>
-<script>
-    $(function () {
-        $("#date").datepicker({dateFormat: 'yy/mm/dd'});
-    });
-</script>
+
+<petclinic:bodyHeader menuName="owners"/>
 <div class="container">
+<<<<<<< HEAD
     <jsp:include page="../fragments/bodyHeader.jsp"/>
     <h2><c:if test="${visit['new']}"><fmt:message key="new"/> </c:if><fmt:message key="visit"/></h2>
 
@@ -55,20 +52,23 @@
     <spring:message code="date" var="date" />
     <spring:message code="description" var="description" />
 
-    <form:form modelAttribute="visit">
-    
-        <petclinic:inputField label="${date}" name="date" />
-        <petclinic:inputField label="${description}" name="description" />
+    <form:form modelAttribute="visit" class="form-horizontal">
+        <div class="form-group has-feedback">
+            <petclinic:inputField label="${date}" name="date"/>
+            <petclinic:inputField label="${description}" name="description"/>
+        </div>
 
-        <div class="form-actions">
-            <input type="hidden" name="petId" value="${visit.pet.id}"/>
-            <button type="submit"><fmt:message key="addVisit"/></button>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="petId" value="${visit.pet.id}"/>
+                <button class="btn btn-primary" type="submit"><fmt:message key="addVisit"/></button>
+            </div>
         </div>
     </form:form>
 
     <br/>
     <b><fmt:message key="previousVisits"/></b>
-    <table style="width: 333px;">
+    <table class="table table-striped">
         <tr>
             <th><fmt:message key="visit"/><fmt:message key="date"/></th>
             <th><fmt:message key="visit"/><fmt:message key="description"/></th>
@@ -85,6 +85,11 @@
 
 </div>
 <jsp:include page="../fragments/footer.jsp"/>
+<script>
+    $(function () {
+        $("#date").datepicker({dateFormat: 'yy/mm/dd'});
+    });
+</script>
 </body>
 
 </html>

@@ -5,38 +5,43 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <html lang="en">
 
-<jsp:include page="../fragments/staticFiles.jsp"/>
+<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 <body>
+<petclinic:bodyHeader menuName="owners"/>
 <div class="container">
-    <jsp:include page="../fragments/bodyHeader.jsp"/>
 
     <h2><fmt:message key="findOwners"/></h2>
 
     <spring:url value="/owners.html" var="formUrl"/>
     <form:form modelAttribute="owner" action="${fn:escapeXml(formUrl)}" method="get" class="form-horizontal"
                id="search-owner-form">
-        <fieldset>
+        <div class="form-group">
             <div class="control-group" id="lastName">
-                <label class="control-label"><fmt:message key="lastName"/> </label>
-                <form:input path="lastName" size="30" maxlength="80"/>
-                <span class="help-inline"><form:errors path="*"/></span>
+                <label class="col-sm-2 control-label"><fmt:message key="lastName"/> </label>
+                <div class="col-sm-10">
+                    <form:input class="form-control" path="lastName" size="30" maxlength="80"/>
+                    <span class="help-inline"><form:errors path="*"/></span>
+                </div>
             </div>
-            <div class="form-actions">
-                <button type="submit"><fmt:message key="findOwner"/></button>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary"><fmt:message key="findOwner"/></button>
             </div>
-        </fieldset>
+        </div>
+
     </form:form>
 
     <br/>
-    <a href='<spring:url value="/owners/new" htmlEscape="true"/>'><fmt:message key="addOwner"/></a>
-
-    <jsp:include page="../fragments/footer.jsp"/>
-
+    <a class="btn btn-default" href='<spring:url value="/owners/new" htmlEscape="true"/>'><fmt:message key="addOwner"/></a>
 </div>
+
+<jsp:include page="../fragments/footer.jsp"/>
 </body>
 
 </html>
