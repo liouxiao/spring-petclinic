@@ -11,17 +11,11 @@
 
 <html lang="en">
 
-<jsp:include page="../fragments/staticFiles.jsp"/>
+<jsp:include page="../fragments/htmlHeader.jsp"/>
 <body>
+<petclinic:bodyHeader menuName="owners"/>
 
-<script>
-    $(function () {
-        $("#birthDate").datepicker({dateFormat: 'yy/mm/dd'});
-    });
-</script>
 <div class="container">
-    <jsp:include page="../fragments/bodyHeader.jsp"/>
-
     <h2>
         <c:if test="${pet['new']}"><fmt:message key="new"/> </c:if>
         <fmt:message key="pet"/>
@@ -34,38 +28,50 @@
     <form:form modelAttribute="pet"
                class="form-horizontal">
         <input type="hidden" name="id" value="${pet.id}"/>
-        <div class="control-group" id="owner">
-            <label class="control-label"><fmt:message key="owner"/> </label>
-
-            <c:choose>
-            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
-            	<c:out value="${pet.owner.lastName}, ${pet.owner.firstName}"/>
-            </c:when>
-            <c:otherwise>
-            	<c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
-            </c:otherwise>
-            </c:choose>
+        <div class="form-group has-feedback">
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><fmt:message key="owner"/></label>
+                <div class="col-sm-10">
+		            <c:choose>
+		            <c:when test='${fn:startsWith(pageContext.response.locale, "zh")}'>
+		            	<c:out value="${pet.owner.lastName}, ${pet.owner.firstName}"/>
+		            </c:when>
+		            <c:otherwise>
+		            	<c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
+		            </c:otherwise>
+		            </c:choose>
+                </div>
+            </div>
+            <petclinic:inputField label="${Name}" name="name"/>
+            <petclinic:inputField label="${BirthDate}" name="birthDate"/>
+            <div class="control-group">
+                <petclinic:selectField name="type" label="${Type} " names="${types}" size="5"/>
+            </div>
         </div>
-        <petclinic:inputField label="${Name}" name="name"/>
-        <petclinic:inputField label="${BirthDate}" name="birthDate"/>
-        <div class="control-group">
-            <petclinic:selectField name="type" label="${Type} " names="${types}" size="5"/>
-        </div>
-        <div class="form-actions">
-            <c:choose>
-                <c:when test="${pet['new']}">
-                    <button type="submit"><fmt:message key="addPet"/></button>
-                </c:when>
-                <c:otherwise>
-                    <button type="submit"><fmt:message key="updatePet"/></button>
-                </c:otherwise>
-            </c:choose>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <c:choose>
+                    <c:when test="${pet['new']}">
+                        <button class="btn btn-primary" type="submit"><fmt:message key="addPet"/></button>
+                    </c:when>
+                    <c:otherwise>
+                        <button class="btn btn-primary" type="submit"><fmt:message key="updatePet"/></button>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </form:form>
     <c:if test="${!pet['new']}">
     </c:if>
-    <jsp:include page="../fragments/footer.jsp"/>
 </div>
+
+<jsp:include page="../fragments/footer.jsp"/>
+
+<script>
+    $(function () {
+        $("#birthDate").datepicker({dateFormat: 'yy/mm/dd'});
+    });
+</script>
 </body>
 
 </html>

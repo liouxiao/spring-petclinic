@@ -6,18 +6,20 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
+<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <html lang="en">
 
-<jsp:include page="../fragments/staticFiles.jsp"/>
+<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 <body>
+<petclinic:bodyHeader menuName="owners"/>
 <div class="container">
-    <jsp:include page="../fragments/bodyHeader.jsp"/>
 
     <h2><fmt:message key="ownerInformation"/></h2>
 
-    <table class="table table-striped" style="width:600px;">
+
+    <table class="table table-striped">
         <tr>
             <th><fmt:message key="name"/></th>
             <td><b>
@@ -43,26 +45,26 @@
             <th><fmt:message key="telephone"/></th>
             <td><c:out value="${owner.telephone}"/></td>
         </tr>
-        <tr>
-            <td>
-                <spring:url value="{ownerId}/edit.html" var="editUrl">
-                    <spring:param name="ownerId" value="${owner.id}"/>
-                </spring:url>
-                <a href="${fn:escapeXml(editUrl)}" class="btn btn-info"><fmt:message key="editOwner"/></a></td>
-            <td>
-                <spring:url value="{ownerId}/pets/new.html" var="addUrl">
-                    <spring:param name="ownerId" value="${owner.id}"/>
-                </spring:url>
-                <a href="${fn:escapeXml(addUrl)}" class="btn btn-success"><fmt:message key="addNewPet"/></a></td>
-        </tr>
     </table>
+
+    <spring:url value="{ownerId}/edit.html" var="editUrl">
+        <spring:param name="ownerId" value="${owner.id}"/>
+    </spring:url>
+    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default"><fmt:message key="editOwner"/></a>
+
+    <spring:url value="{ownerId}/pets/new.html" var="addUrl">
+        <spring:param name="ownerId" value="${owner.id}"/>
+    </spring:url>
+    <a href="${fn:escapeXml(addUrl)}" class="btn btn-primary"><fmt:message key="addNewPet"/></a>
+
 
     <h2><fmt:message key="petsAndVisits"/></h2>
 
-    <c:forEach var="pet" items="${owner.pets}">
-        <table class="table" style="width:600px;">
+    <table class="table table-striped">
+        <c:forEach var="pet" items="${owner.pets}">
+
             <tr>
-                <td valign="top" style="width: 120px;">
+                <td valign="top">
                     <dl class="dl-horizontal">
                         <dt><fmt:message key="petName"/></dt>
                         <dd><c:out value="${pet.name}"/></dd>
@@ -105,12 +107,13 @@
                     </table>
                 </td>
             </tr>
-        </table>
-    </c:forEach>
 
-    <jsp:include page="../fragments/footer.jsp"/>
+        </c:forEach>
+    </table>
 
 </div>
+
+<jsp:include page="../fragments/footer.jsp"/>
 
 </body>
 
