@@ -9,7 +9,7 @@
 ```
 	git clone https://github.com/spring-projects/spring-petclinic.git
 	cd spring-petclinic
-        ./mvnw tomcat7:run
+    ./mvnw tomcat7:run
 ```
 
 您可以通过右边的链接访问petclinic应用： http://localhost:9966/petclinic/
@@ -62,7 +62,7 @@ File -> Import -> Maven -> Existing Maven project
   <tr>
     <td>Java Config分支</td>
     <td>
-      Petclinic默认使用基于XML的配置方式。如果您更喜欢使用Java Config（基于注解），这里有个Java Config分支 <a href="https://github.com/spring-projects/spring-petclinic/tree/javaconfig">here</a>。Antoine Rey贡献了这个分支，在此向他致谢。    
+      Petclinic默认使用基于XML的配置方式。如果您更喜欢使用Java Config（基于注解），这里有个Java Config分支 <a href="https://github.com/spring-projects/spring-petclinic/tree/javaconfig">链接</a>。Antoine Rey贡献了这个分支，在此向他致谢。    
     </td>
   </tr>
   <tr>
@@ -86,10 +86,10 @@ File -> Import -> Maven -> Existing Maven project
   <tr>
     <td>Bower</td>
     <td>
-      <a href="/pom.xml">bower-install maven profile declaration inside pom.xml</a> <br />
+      <a href="/pom.xml">bower-install maven profile 在 pom.xml 中声明</a> <br />
       <a href="/bower.json">JavaScript库在bower.json中定义</a> <br />
       <a href="/.bowerrc">Bower采用JSON格式的配置文件</a> <br />
-      <a href="/src/main/resources/spring/mvc-core-config.xml#L30">Resource mapping in Spring configuration</a>
+      <a href="/src/main/resources/spring/mvc-core-config.xml#L30">在Spring配置中的资源映射</a>
     </td>
   </tr>
   <tr>
