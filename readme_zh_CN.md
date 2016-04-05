@@ -8,7 +8,8 @@
 ## 在本地运行petclinic应用
 ```
 	git clone https://github.com/spring-projects/spring-petclinic.git
-	mvnw tomcat7:run
+	cd spring-petclinic
+        ./mvnw tomcat7:run
 ```
 
 您可以通过右边的链接访问petclinic应用： http://localhost:9966/petclinic/
