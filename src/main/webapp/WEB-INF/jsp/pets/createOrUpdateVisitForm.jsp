@@ -18,8 +18,6 @@
 
 <petclinic:bodyHeader menuName="owners"/>
 <div class="container">
-<<<<<<< HEAD
-    <jsp:include page="../fragments/bodyHeader.jsp"/>
     <h2><c:if test="${visit['new']}"><fmt:message key="new"/> </c:if><fmt:message key="visit"/></h2>
 
     <b><fmt:message key="pet"/></b>
