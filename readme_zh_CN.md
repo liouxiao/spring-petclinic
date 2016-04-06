@@ -164,7 +164,7 @@ File -> Import -> Maven -> Existing Maven project
     <th width="300px">其它</th><th width="300px">文件</th>
   </tr>
   <tr>
-    <td>Gradle branch</td>
+    <td>Gradle 分支</td>
     <td>
       <a href="https://github.com/whimet/spring-petclinic">参见此处</a></td>
   </tr>
@@ -184,12 +184,12 @@ File -> Import -> Maven -> Existing Maven project
 
   <tr>
     <td>Spring JDBC: simplify usage of NamedParameterJdbcTemplate</td>
-    <td> <a href="https://jira.springsource.org/browse/SPR-10256"> SPR-10256</a> and <a href="https://jira.springsource.org/browse/SPR-10257"> SPR-10257</a> </td>
+    <td> <a href="https://jira.springsource.org/browse/SPR-10256"> SPR-10256</a> 及 <a href="https://jira.springsource.org/browse/SPR-10257"> SPR-10257</a> </td>
   </tr>
   <tr>
     <td>Bean Validation / Hibernate Validator: simplify Maven dependencies and backward compatibility</td>
     <td>
-      <a href="https://hibernate.atlassian.net/browse/HV-790"> HV-790</a> and <a href="https://hibernate.atlassian.net/browse/HV-792"> HV-792</a>
+      <a href="https://hibernate.atlassian.net/browse/HV-790"> HV-790</a> 及 <a href="https://hibernate.atlassian.net/browse/HV-792"> HV-792</a>
       </td>
   </tr>
   <tr>
